@@ -10,7 +10,7 @@
   <body>
 <div class="container">
     <h1>Your nibe-fetcher code</h1>
-    <pre>No code provided</pre>
+    <input onclick="this.select();" value="No code provided" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
     function getParameterByName(name, url) {
@@ -24,10 +24,12 @@
       if (!results[2]) return '';
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-
-    $(function() {
-	$('pre').text(getParameterByName('code'))      
-    })  
+    const err = getParameterByName('error')
+    if (err) { 
+	    document.querySelector("input").value = err 
+    } else {
+	    document.querySelector("input").value = getParameterByName('code')
+    }
     </script>
 </div>
   </body>
